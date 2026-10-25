@@ -16,18 +16,20 @@
 
 ## 截图
 
-| 框选区域 | 主界面 |
+| 主界面 | 框选区域 |
 |---|---|
-| ![框选区域](docs/screenshots/01-region-select.png) | ![主界面](docs/screenshots/02-home.png) |
+| ![主界面](docs/screenshots/02-home.png) | ![框选区域](docs/screenshots/01-region-select.png) |
 
-| 通知栏控制面板 | 文件管理 |
+| 画质 / 帧率 / 悬浮条设置 | 通知栏控制面板 |
 |---|---|
-| ![通知](docs/screenshots/03-notification.png) | ![文件列表](docs/screenshots/04-file-list.png) |
+| ![设置](docs/screenshots/06-settings.png) | ![通知](docs/screenshots/03-notification.png) |
 
-**录制成片**：视频尺寸 1114 × 1312，正好是框选的那一块。画面里 App 自己显示着
+| 文件管理（多选批量删除） | 录制成片 |
+|---|---|
+| ![文件列表](docs/screenshots/04-file-list.png) | ![录制样张](docs/screenshots/05-capture-sample.png) |
+
+**关于最后那张成片**：视频尺寸 1114 × 1312，正好是框选的那一块。画面里 App 自己显示着
 「1114 × 1312 @ (25, 635)」—— 文字没有变形、没有缩放，说明裁剪是逐像素精确的。
-
-![录制样张](docs/screenshots/05-capture-sample.png)
 
 ---
 

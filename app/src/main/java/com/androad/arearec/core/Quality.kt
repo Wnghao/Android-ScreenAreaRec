@@ -13,7 +13,16 @@ enum class Quality(val label: String, val factor: Double, val hint: String) {
     HD("高清", 0.18, "录视频也清楚，推荐"),
     ULTRA("极高", 0.30, "几乎无损，文件很大");
 
-    /** 按当前分辨率/帧率估算的码率，用于 UI 展示 */
+    /**
+     * 按当前分辨率/帧率估算的码率，用于 UI 展示。
+     * 必须和 [VideoEncoder.estimateBitRate] 的上限一致，否则会显示出
+     * 「112 Mbps」这种实际根本达不到的数字。
+     */
     fun estimateMbps(w: Int, h: Int, fps: Int): Double =
-        (w.toDouble() * h * fps * factor) / 1_000_000.0
+        ((w.toDouble() * h * fps * factor) / 1_000_000.0).coerceAtMost(MAX_MBPS)
+
+    companion object {
+        /** 编码器侧的码率上限，两处必须一致 */
+        const val MAX_MBPS = 40.0
+    }
 }
