@@ -13,7 +13,7 @@ android {
         minSdk = 29
         targetSdk = 34
         versionCode = 1
-        versionName = "1.0"
+        versionName = "1.0.0"
     }
 
     buildTypes {
@@ -23,6 +23,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            // 用 debug keystore 签名。这个项目不含任何敏感数据，
+            // 这样任何人 clone 下来都能直接产出可安装的 release 包，
+            // 不用自己配 keystore。要上架应用商店的话请换成自己的签名。
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
 
