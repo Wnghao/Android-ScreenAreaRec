@@ -1,5 +1,12 @@
 # Android-ScreenAreaRec
 
+[![Release](https://img.shields.io/github/v/release/Wnghao/Android-ScreenAreaRec?label=APK&color=185FA5)](https://github.com/Wnghao/Android-ScreenAreaRec/releases/latest)
+[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![Android](https://img.shields.io/badge/Android-10%2B-3DDC84)](https://developer.android.com)
+
+**[⬇ 下载最新 APK](https://github.com/Wnghao/Android-ScreenAreaRec/releases/latest)** ·
+[更新日志](https://github.com/Wnghao/Android-ScreenAreaRec/releases)
+
 **只录屏幕上框出来的那一块。** 一个不需要 root 的 Android 区域录屏 App。
 
 用常驻悬浮条控制开始 / 暂停 / 停止 / 打开录制文件，声音可选内录、麦克风或两者混音，
