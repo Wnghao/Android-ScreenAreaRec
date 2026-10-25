@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  通知栏控制面板。
+  高度刻意压在 60dp 以内：DecoratedCustomViewStyle 的折叠态只有 64dp，
+  超了按钮会被裁掉，而「不展开就能点」正是做这个布局的唯一理由。
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingStart="14dp"
+    android:paddingEnd="14dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="7dp">
+
+    <TextView
+        android:id="@+id/n_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:text="区域录制" />
+
+    <LinearLayout
+        android:id="@+id/n_actions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/n_btn1"
+            android:layout_width="0dp"
+            android:layout_height="29dp"
+            android:layout_weight="1"
+            android:background="@drawable/notif_btn_bg"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:text="开始" />
+
+        <TextView
+            android:id="@+id/n_btn2"
+            android:layout_width="0dp"
+            android:layout_height="29dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/notif_btn_bg"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:text="区域" />
+
+        <TextView
+            android:id="@+id/n_btn3"
+            android:layout_width="0dp"
+            android:layout_height="29dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/notif_btn_bg"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:text="文件" />
+    </LinearLayout>
+</LinearLayout>

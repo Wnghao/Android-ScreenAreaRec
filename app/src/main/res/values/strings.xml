@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">区域录制</string>
+    <string name="recordings_title">录制文件</string>
+</resources>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- 屏幕采集 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION" />
+    <!-- 常驻悬浮控制条 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- 通知（前台服务常驻通知） -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- 麦克风 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- 保持屏幕常亮，录制中别黑屏 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:roundIcon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:targetApi="34">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 从悬浮窗发起系统录屏授权的透明中转页。
+             注意：绝对不能加 noHistory —— 系统授权框是另一个 Activity，
+             会把这里顶成 stopped，noHistory 会立刻 finish 掉它，
+             导致 onActivityResult 永远不回调，表现就是点「开始」没反应。 -->
+        <activity
+            android:name=".ProjectionRequestActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:taskAffinity=".projection"
+            android:theme="@style/TranslucentTheme" />
+
+        <!-- 录制文件列表 -->
+        <activity
+            android:name=".RecordingsActivity"
+            android:exported="false"
+            android:label="@string/recordings_title" />
+
+        <!-- 常驻：悬浮控制条 -->
+        <service
+            android:name=".overlay.OverlayService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="floating recording control panel" />
+        </service>
+
+        <!-- 录制期间：屏幕采集 + 编码 -->
+        <service
+            android:name=".record.RecordService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="mediaProjection" />
+
+        <!-- 控制中心磁贴：澎湃 OS 折叠了前台服务通知，磁贴才是真正一键可达的入口 -->
+        <service
+            android:name=".RecordTileService"
+            android:exported="true"
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+
+    </application>
+</manifest>

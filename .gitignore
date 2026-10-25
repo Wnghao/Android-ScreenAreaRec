@@ -1,0 +1,25 @@
+# Gradle
+.gradle/
+build/
+app/build/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# 本地环境，含机器相关的 SDK 路径，绝对不能提交
+local.properties
+
+# IDE
+.idea/
+*.iml
+*.hprof
+
+# 系统
+.DS_Store
+Thumbs.db
+
+# 产物
+*.apk
+*.aab
+*.ap_
+*.dex
